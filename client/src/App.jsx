@@ -62,7 +62,14 @@ const appRouter = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
       { path: "learn", element: <Navigate to="/workspace" replace /> },
-      { path: "playground", element: <Lazy element={Playground} /> },
+      {
+        path: "playground",
+        element: (
+          <ProtectedRoute>
+            <Lazy element={Playground} />
+          </ProtectedRoute>
+        ),
+      },
 
       // Protected routes
       {
