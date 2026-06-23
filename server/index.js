@@ -64,6 +64,7 @@ app.use(cookieParser());
 // 6. Static Folder for Uploads
 
 // 7. API Routes
+app.get("/api/v1/health", (req, res) => res.status(200).json({ status: "ok" }));
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/ai", aiRoute);
