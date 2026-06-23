@@ -12,7 +12,7 @@ const LANG_META = {
     difficulty: "Beginner",
     diffColor: "text-emerald-400",
     tags: ["Frontend", "Web"],
-    banner: "/gladiator.jpg",
+    banner: "/gladiator.webp",
     detail:
       "Build the skeleton of every webpage. Learn tags, forms, semantics, accessibility and the full HTML5 spec through hands-on challenges.",
     learn: [
@@ -72,7 +72,7 @@ const LANG_META = {
     difficulty: "Intermediate",
     diffColor: "text-yellow-400",
     tags: ["Framework", "Frontend"],
-    banner: "/gladiator1.jpg",
+    banner: "/gladiator1.webp",
     detail:
       "Hooks, state, context and performance patterns. Build UIs that re-render correctly, efficiently, every single time.",
     learn: [
@@ -110,7 +110,7 @@ export default function SkillCard({
     difficulty: "",
     diffColor: "text-zinc-400",
     tags: [],
-    banner: "/gladiator.jpg",
+    banner: "/gladiator.webp",
     detail: "",
     learn: [],
   };

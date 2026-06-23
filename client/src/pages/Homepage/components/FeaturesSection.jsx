@@ -52,7 +52,7 @@ const FeaturesSection = () => {
           </p>
           <div className="mt-auto w-full rounded-xl border border-white/5 min-h-[220px] sm:min-h-[260px] overflow-hidden flex items-center justify-center">
             <img
-              src="/h2.jpg"
+              src="/h2.webp"
               alt="Rank badges"
               className="w-full h-full object-cover"
             />
