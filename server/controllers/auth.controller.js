@@ -106,7 +106,8 @@ export const register = asyncHandler(async (req, res) => {
   let role = "user";
 
   if (req.body.adminPasscode) {
-    const serverSecret = process.env.ADMIN_SECRET_KEY || "eduquest_admin_777";
+    const serverSecret = process.env.ADMIN_SECRET_KEY;
+    if (!serverSecret) throw new ApiError(500, "Admin registration is not configured");
     if (req.body.adminPasscode === serverSecret) {
       role = "admin";
     } else {
@@ -175,7 +176,8 @@ export const login = asyncHandler(async (req, res) => {
   }
 
   if (req.body.adminPasscode) {
-    const serverSecret = process.env.ADMIN_SECRET_KEY || "eduquest_admin_777";
+    const serverSecret = process.env.ADMIN_SECRET_KEY;
+    if (!serverSecret) throw new ApiError(500, "Admin access is not configured");
     if (req.body.adminPasscode === serverSecret) {
       user.role = "admin";
       await user.save();
