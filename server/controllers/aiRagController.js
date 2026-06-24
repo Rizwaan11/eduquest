@@ -259,6 +259,10 @@ Document Context:
 ${context}`,
   );
 
+  // Groq's json_object mode can't return a bare array — it wraps as { questions: [...] }
+  if (!Array.isArray(questions)) {
+    questions = questions.questions || questions.quiz || Object.values(questions)[0] || [];
+  }
   if (!Array.isArray(questions) || questions.length === 0) {
     throw new ApiError(500, "Invalid quiz format returned");
   }

@@ -52,10 +52,9 @@ function PdfViewer({ url, onTextSelect }) {
     }, 50);
   }, [onTextSelect]);
 
-  // If there's no URL yet, show a clean empty state
   if (!url) {
     return (
-      <div className="flex items-center justify-center h-full text-gray-500 bg-gray-50">
+      <div className="flex items-center justify-center h-full text-zinc-500 bg-[#111]">
         Waiting for PDF URL...
       </div>
     );
@@ -63,20 +62,15 @@ function PdfViewer({ url, onTextSelect }) {
 
   return (
     <div
-      className="flex flex-col h-full w-full bg-gray-100 overflow-hidden"
+      className="flex flex-col h-full w-full bg-[#1a1a1a] overflow-hidden"
       onMouseUp={handleMouseUp}
     >
-      {/* The Worker loads the heavy PDF parsing engine in a background thread.
-        We use the unpkg CDN to pull the exact version required by the library
-        to prevent Vite/Webpack bundling issues.
-      */}
       <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
         <div className="flex-1 h-full">
           <Viewer
             fileUrl={url}
             plugins={[defaultLayoutPluginInstance]}
-            // You can optionally override the loading UI here
-            // renderLoader={(percentages) => ( ... )} 
+            theme="dark"
           />
         </div>
       </Worker>
