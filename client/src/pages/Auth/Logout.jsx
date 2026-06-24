@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useQueryClient } from "@tanstack/react-query";
+import { googleLogout } from "@react-oauth/google";
 import { authLogout } from "../../features/auth/authSlice";
 import api from "../../features/auth/authApi";
 
@@ -10,6 +11,7 @@ export default function LogoutButton({ className }) {
   const handleLogout = async () => {
     try {
       await api.post("/auth/logout");
+      googleLogout();
       queryClient.clear();
       dispatch(authLogout());
     } catch (err) {
