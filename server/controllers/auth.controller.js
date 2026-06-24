@@ -175,17 +175,6 @@ export const login = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Incorrect email or password");
   }
 
-  if (req.body.adminPasscode) {
-    const serverSecret = process.env.ADMIN_SECRET_KEY;
-    if (!serverSecret) throw new ApiError(500, "Admin access is not configured");
-    if (req.body.adminPasscode === serverSecret) {
-      user.role = "admin";
-      await user.save();
-    } else {
-      throw new ApiError(401, "Invalid Admin Passcode");
-    }
-  }
-
   if (user.dayStreak > 0) {
     user = await checkStreak(user);
   }
